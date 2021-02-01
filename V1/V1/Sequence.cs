@@ -42,7 +42,7 @@ namespace V1
         private List<string> inputStreamSplitter(string _inputString)
         {
             List<string> _list = new List<string>();
-            _list = _inputString.Split(' ').ToList(); // Assuming the split char is one space
+            _list = _inputString.Split(' ').ToList(); // Assuming the split char is one space.
 
             if (validateInput(_list))
                 return _list;

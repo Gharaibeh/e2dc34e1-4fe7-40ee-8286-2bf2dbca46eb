@@ -15,9 +15,10 @@ namespace V1
             try
             {
                 Sequence seq = new Sequence();
-                printResult(seq.returnSubsequence("6 2 4 6 1 5 9 2"));
-                //printResult(seq.returnSubsequence("6 1 5 9 2"));
-                //printResult(seq.returnSubsequence("6 2 4 3 1 5 9"));
+                /* Input sample examples:
+                 printResult(seq.returnSubsequence("6 2 4 6 1 5 9 2"));
+                 printResult(seq.returnSubsequence("6 1 5 9 2"));
+                 printResult(seq.returnSubsequence("6 2 4 3 1 5 9"));*/
             }
             catch (Exception ex)
             {
@@ -34,9 +35,6 @@ namespace V1
         static void printResult(string output)
         {
             Console.WriteLine("The longest subsequence is:\n" + output);
-
         }
-
-
     }
 }
