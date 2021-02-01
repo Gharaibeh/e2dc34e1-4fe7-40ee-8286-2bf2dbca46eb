@@ -14,15 +14,18 @@ namespace V1
         List<string> resultList1;
         List<string> resultList2;
 
+        StringBuilder returnString;
+
         public Sequence()
         {
-            Console.WriteLine("Constructor");
+
             myList = new List<string>();
             resultList1 = new List<string>();
             resultList2 = new List<string>();
-          
+            returnString = new StringBuilder();
 
-           
+
+
         }
 
         public string fun1(string _inputString)
@@ -65,12 +68,13 @@ namespace V1
                 foreach (string x in resultList1)
                     resultList2.Add(x);
             }
-            Console.WriteLine("the longest sequence is :  ");
+
             foreach (string aa in resultList2)
-                Console.WriteLine(aa);
+                returnString.Append(aa + " ");
 
 
-            return "null";  
+
+            return returnString.ToString();  
 
         } 
     }
