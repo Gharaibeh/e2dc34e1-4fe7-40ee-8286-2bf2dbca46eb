@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace V1
 {
-    class Sequence
+   public class Sequence
     {
         string[] array;
         List<string> myList;
@@ -24,7 +25,7 @@ namespace V1
            
         }
 
-        public void fun1(string _inputString)
+        public string fun1(string _inputString)
         {
 
             myList = _inputString.Split(' ').ToList();
@@ -69,7 +70,7 @@ namespace V1
                 Console.WriteLine(aa);
 
 
-
+            return "null";  
 
         } 
     }
