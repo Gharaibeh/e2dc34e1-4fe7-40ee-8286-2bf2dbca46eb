@@ -27,7 +27,7 @@ namespace V1
         /// <summary>
         /// Initializer
         /// </summary>
-        void InitializeComponents()
+        private void InitializeComponents()
         {
             splittedList = new List<string>();
             originalList = new List<string>();
@@ -40,10 +40,10 @@ namespace V1
         /// </summary>
         /// <param name="_inputString"></param>
         /// <returns></returns>
-        List<string> inputStreamSplitter(string _inputString)
+        private List<string> inputStreamSplitter(string _inputString)
         {
             List<string> _list = new List<string>();
-            _list = _inputString.Split(' ').ToList();
+            _list = _inputString.Split(' ').ToList(); // Assuming the split char is one space
 
             if (validateInput(_list))
                 return _list;
@@ -51,7 +51,12 @@ namespace V1
                 return null;
         }
 
-        bool validateInput(List<string> _list)
+        /// <summary>
+        /// Validate if digits only
+        /// </summary>
+        /// <param name="_list"></param>
+        /// <returns></returns>
+        private bool validateInput(List<string> _list)
         {
             foreach (string portion in _list)
             {
@@ -70,12 +75,8 @@ namespace V1
         /// <returns></returns>
         public string returnSubsequence(string _inputString)
         {
-
             splittedList = inputStreamSplitter(_inputString);
-             
             int index = 0;
-
-            index = 0;
             originalList.Add(splittedList[index]);
 
             while (index < splittedList.Count - 1)
@@ -106,13 +107,19 @@ namespace V1
                     comparableList.Add(x);
             }
 
+            return convertIntoString(comparableList);
+        }
+
+        /// <summary>
+        /// Convert from list into string (proposed output)
+        /// </summary>
+        /// <param name="_comparableList"></param>
+        /// <returns></returns>
+        private string convertIntoString(List<string> _comparableList)
+        {
             foreach (string element in comparableList)
                 resultString.Append(element + " ");
-
-
-
-            return resultString.ToString();  
-
-        } 
+            return resultString.ToString();
+        }
     }
 }
