@@ -9,72 +9,88 @@ namespace V1
 {
    public class Sequence
     {
-        string[] array;
-        List<string> myList;
-        List<string> resultList1;
-        List<string> resultList2;
 
-        StringBuilder returnString;
+        List<string> splittedList;
+        List<string> originalList;
+        List<string> comparableList;
 
+        StringBuilder resultString;
+       
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Sequence()
         {
-
-            myList = new List<string>();
-            resultList1 = new List<string>();
-            resultList2 = new List<string>();
-            returnString = new StringBuilder();
-
-
-
+            InitializeComponents();
+        }
+       
+        /// <summary>
+        /// Initializer
+        /// </summary>
+        void InitializeComponents()
+        {
+            splittedList = new List<string>();
+            originalList = new List<string>();
+            comparableList = new List<string>();
+            resultString = new StringBuilder();
         }
 
-        public string fun1(string _inputString)
+        /// <summary>
+        /// Split long string into structured list of strings
+        /// </summary>
+        /// <param name="_inputString"></param>
+        /// <returns></returns>
+        List<string> inputStreamSplitter(string _inputString)
+        {
+            List<string> _list = new List<string>();
+            _list = _inputString.Split(' ').ToList();
+            return _list;
+        }
+
+        public string returnSubsequence(string _inputString)
         {
 
-            myList = _inputString.Split(' ').ToList();
-
-
-
+            splittedList = inputStreamSplitter(_inputString);
+             
             int fromIndex = 0;
-            int toIndex = 0;
-            bool toCheck = true;
+           
             fromIndex = 0;
-            resultList1.Add(myList[fromIndex]);
+            originalList.Add(splittedList[fromIndex]);
 
-            while (fromIndex < myList.Count - 1)
+            while (fromIndex < splittedList.Count - 1)
             {
-                if (int.Parse(myList[fromIndex]) < int.Parse(myList[fromIndex + 1]))
+                if (int.Parse(splittedList[fromIndex]) < int.Parse(splittedList[fromIndex + 1]))
                 {
                     fromIndex++;
-                    resultList1.Add(myList[fromIndex]);
+                    originalList.Add(splittedList[fromIndex]);
                 }
                 else
                 {
-                    if (resultList1.Count > resultList2.Count)
+                    if (originalList.Count > comparableList.Count)
                     {
-                        resultList2.Clear();
-                        foreach (string x in resultList1)
-                            resultList2.Add(x);
+                        comparableList.Clear();
+                        foreach (string x in originalList)
+                            comparableList.Add(x);
                     }
                     fromIndex++;
-                    resultList1.Clear();
-                    resultList1.Add(myList[fromIndex]);
+                    originalList.Clear();
+                    originalList.Add(splittedList[fromIndex]);
                 }
             }
 
-            if (resultList1.Count > resultList2.Count)
+            if (originalList.Count > comparableList.Count)
             {
-                resultList2.Clear();
-                foreach (string x in resultList1)
-                    resultList2.Add(x);
+                comparableList.Clear();
+                foreach (string x in originalList)
+                    comparableList.Add(x);
             }
 
-            foreach (string aa in resultList2)
-                returnString.Append(aa + " ");
+            foreach (string element in comparableList)
+                resultString.Append(element + " ");
 
 
 
-            return returnString.ToString();  
+            return resultString.ToString();  
 
         } 
     }
