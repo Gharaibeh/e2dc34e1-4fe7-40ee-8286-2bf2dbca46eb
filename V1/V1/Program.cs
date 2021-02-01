@@ -13,7 +13,7 @@ namespace V1
         static void Main(string[] args)
         {
             Sequence seq = new Sequence();
-            seq.print();
+            seq.fun1("6 1 5 9 2");
             Console.ReadLine();
         }
 
