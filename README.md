@@ -1,18 +1,9 @@
 # Coding Test
 
-## Objective:
-This coding test is designed to assess following software development skills:
--	Transform business problems to automated tests and develop solution (TDD)
--	Simple Design (Passes tests, reveals intent, DRY, small)
--	Continuous integration and deployment
+## About project:
+This coding test is designed to find the longest increasing subsequence, developed in C# language, UnitTest has been added as well.
 
-## Get Started
-Create a *public* repository in [GitHub](https://github.com/) where the repository name is a [UUID](https://www.uuidgenerator.net/version4). Please keep commiting to this GitHub repository as you develop through rest of the steps. Regarding programming language, please choose the one you are most comfortable with to solve the problem.
 
-When you are done, share the repository URL with the person who asked you to try this exercise.
-
-## Problem
-Develop a function that takes one string input of any number of integers separated by single whitespace. The function then outputs the longest increasing subsequence (increased by any number) present in that sequence. If more than 1 sequence exists with the longest length, output the earliest one. You may develop supporting functions as many as you find reasonable.
 
 #### Test Case 01
 Input
@@ -124,8 +115,28 @@ Output
 1 5 9
 ```
 
-## Development Environment
-To be able to run tests and linting in a developer machine, use a docker-compose service, so that they don't have any dependency on the host machine.
 
+#### Test Case 12
+Input
+```
+6a 2 4 3 1 5 9
+```
+Output
+```
+All should be digits, Bad input format!
+```
+
+#### Test Case 13
+Input
+```
+6 2 4xx 3 1 5 9
+```
+Output
+```
+All should be digits, Bad input format!
+```
+
+## Development Environment
+Purely in C# console application
 ## Continuous Integration
-Integrate a CI pipeline with this project that executes all the tests and checks linting for the project. You may choose a CI platform of your choice (e.g. [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions), [CircleCI](https://circleci.com/) and [Travis CI](https://travis-ci.com/) have free plan to use for public projects).
+GitHub used and fork as CI
