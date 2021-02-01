@@ -9,9 +9,8 @@ namespace V1
 {
    public class Sequence
     {
-
         List<string> splittedList;
-        List<string> originalList;
+        List<string> comparatorList;
         List<string> comparableList;
 
         StringBuilder resultString;
@@ -30,7 +29,7 @@ namespace V1
         private void InitializeComponents()
         {
             splittedList = new List<string>();
-            originalList = new List<string>();
+            comparatorList = new List<string>();
             comparableList = new List<string>();
             resultString = new StringBuilder();
         }
@@ -77,37 +76,41 @@ namespace V1
         {
             splittedList = inputStreamSplitter(_inputString);
             int index = 0;
-            originalList.Add(splittedList[index]);
+            comparatorList.Add(splittedList[index]);
 
             while (index < splittedList.Count - 1)
             {
                 if (int.Parse(splittedList[index]) < int.Parse(splittedList[index + 1]))
                 {
                     index++;
-                    originalList.Add(splittedList[index]);
+                    comparatorList.Add(splittedList[index]);
                 }
                 else
                 {
-                    if (originalList.Count > comparableList.Count)
-                    {
-                        comparableList.Clear();
-                        foreach (string x in originalList)
-                            comparableList.Add(x);
-                    }
+                    compareLongestSequence();
                     index++;
-                    originalList.Clear();
-                    originalList.Add(splittedList[index]);
+                    comparatorList.Clear();
+                    comparatorList.Add(splittedList[index]);
                 }
             }
+            // Last check after exit loop
+            compareLongestSequence();
 
-            if (originalList.Count > comparableList.Count)
+            //return result
+            return convertIntoString(comparableList);
+        }
+
+        /// <summary>
+        /// Compare lists to save the longest subsequence
+        /// </summary>
+        private void compareLongestSequence()
+        {
+            if (comparatorList.Count > comparableList.Count)
             {
                 comparableList.Clear();
-                foreach (string x in originalList)
-                    comparableList.Add(x);
+                foreach (string element in comparatorList)
+                    comparableList.Add(element);
             }
-
-            return convertIntoString(comparableList);
         }
 
         /// <summary>
@@ -119,7 +122,8 @@ namespace V1
         {
             foreach (string element in comparableList)
                 resultString.Append(element + " ");
-            return resultString.ToString();
+            
+            return resultString.ToString().Trim();
         }
     }
 }
