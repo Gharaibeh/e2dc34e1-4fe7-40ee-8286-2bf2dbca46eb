@@ -44,25 +44,46 @@ namespace V1
         {
             List<string> _list = new List<string>();
             _list = _inputString.Split(' ').ToList();
-            return _list;
+
+            if (validateInput(_list))
+                return _list;
+            else
+                return null;
         }
 
+        bool validateInput(List<string> _list)
+        {
+            foreach (string portion in _list)
+            {
+                if (!portion.All(c => char.IsDigit(c)))
+                {
+                    throw new Exception("All should be digits, Bad input format!");
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Return the longest subsequence
+        /// </summary>
+        /// <param name="_inputString"></param>
+        /// <returns></returns>
         public string returnSubsequence(string _inputString)
         {
 
             splittedList = inputStreamSplitter(_inputString);
              
-            int fromIndex = 0;
-           
-            fromIndex = 0;
-            originalList.Add(splittedList[fromIndex]);
+            int index = 0;
 
-            while (fromIndex < splittedList.Count - 1)
+            index = 0;
+            originalList.Add(splittedList[index]);
+
+            while (index < splittedList.Count - 1)
             {
-                if (int.Parse(splittedList[fromIndex]) < int.Parse(splittedList[fromIndex + 1]))
+                if (int.Parse(splittedList[index]) < int.Parse(splittedList[index + 1]))
                 {
-                    fromIndex++;
-                    originalList.Add(splittedList[fromIndex]);
+                    index++;
+                    originalList.Add(splittedList[index]);
                 }
                 else
                 {
@@ -72,9 +93,9 @@ namespace V1
                         foreach (string x in originalList)
                             comparableList.Add(x);
                     }
-                    fromIndex++;
+                    index++;
                     originalList.Clear();
-                    originalList.Add(splittedList[fromIndex]);
+                    originalList.Add(splittedList[index]);
                 }
             }
 
