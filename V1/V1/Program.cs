@@ -22,7 +22,7 @@ namespace V1
             resultList1 = new List<string>();
             resultList2 = new List<string>();
             fun1("6 1 5 9 2");
-             
+
             Console.WriteLine("Sequence checker");
             Console.ReadLine();
         }
@@ -30,7 +30,6 @@ namespace V1
         static void fun1(string _inputString)
         {
 
-            //myList = inputString.text.Split(' ').ToList();
             myList = _inputString.Split(' ').ToList();
 
 
